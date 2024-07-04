@@ -121,6 +121,14 @@ function App() {
       );
       if (!response.ok) {
         const errorText = await response.text();
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Error",
+          text: errorText,
+          showConfirmButton: false,
+          timer: 500,
+        });
         throw new Error(`Network request failed: ${errorText}`);
       } else {
         Swal.fire({
