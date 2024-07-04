@@ -1,5 +1,4 @@
 import { Toaster } from "react-hot-toast";
-import toast from "react-hot-toast";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
@@ -12,7 +11,6 @@ const ListItem = ({ item, handleCheck, handleDelete }) => {
         defaultChecked={item.checked}
         onChange={() => {
           handleCheck(item.id);
-          toast.success("Success");
         }}
       />
       <label
@@ -34,13 +32,6 @@ const ListItem = ({ item, handleCheck, handleDelete }) => {
           }).then((result) => {
             if (result.isConfirmed) {
               handleDelete(item.id);
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 500,
-              });
             }
           });
         }}

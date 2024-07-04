@@ -4,6 +4,8 @@ import AddItem from "./components/AddItem";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 import Content from "./components/Content";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -86,6 +88,8 @@ function App() {
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Network request failed: ${errorText}`);
+      } else {
+        toast.success("Success");
       }
 
       // const data = await response.json();
@@ -118,6 +122,14 @@ function App() {
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Network request failed: ${errorText}`);
+      } else {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 500,
+        });
       }
       // const data = await response.json();
       // console.log(data);
